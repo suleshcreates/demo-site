@@ -188,11 +188,11 @@ export function Hero() {
       <div className="container-lux relative z-10 flex h-full flex-col justify-end pb-16 md:pb-24">
         <div className="hero-copy max-w-5xl select-none" data-depth="0.18">
           <p className="hero-fade eyebrow">{banner.eyebrow}</p>
-          <h1 className="mt-6 max-w-[11ch] font-display text-[clamp(3rem,9vw,8.75rem)] text-bone drop-shadow-[0_4px_24px_rgba(0,0,0,0.85)]">
+          <h1 className="mt-6 max-w-[11ch] font-display text-[clamp(3rem,9vw,8.75rem)] leading-[1.05] text-bone drop-shadow-[0_4px_24px_rgba(0,0,0,0.85)]">
             {banner.headline.map((line, i) => (
-              <span key={line} className="hero-line block overflow-hidden">
+              <span key={line} className="hero-line block overflow-hidden py-2 -my-2">
                 {i === banner.headline.length - 1 ? (
-                  <em className="hero-accent-line not-italic text-brass-soft drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)]">{line}</em>
+                  <em className="hero-accent-line inline-block not-italic text-brass-soft pb-1 drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)]">{line}</em>
                 ) : (
                   line
                 )}

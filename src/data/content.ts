@@ -393,7 +393,15 @@ export const projects: Project[] = [
     scope: "Modular kitchen",
     category: "Kitchen",
     image: catKitchen,
-    span: "tall",
+  },
+  {
+    id: "p7",
+    title: "Arch Residence",
+    location: "Baner",
+    scope: "Living & lounge",
+    category: "Living Room",
+    image: catSofa,
+    span: "wide",
   },
   {
     id: "p5",
@@ -412,21 +420,13 @@ export const projects: Project[] = [
     image: catWardrobe,
   },
   {
-    id: "p7",
-    title: "Arch Residence",
-    location: "Baner",
-    scope: "Living & lounge",
-    category: "Living Room",
-    image: catSofa,
-    span: "wide",
-  },
-  {
     id: "p8",
     title: "Founders' Cabin",
     location: "EON IT Park",
     scope: "Office interiors",
     category: "Office",
     image: workshopWide,
+    span: "tall",
   },
 ];
 

@@ -66,7 +66,7 @@ export function FinalCta() {
         <p className="eyebrow">Let's begin</p>
         <h2 className="ct-head mt-6 max-w-4xl font-display text-[clamp(2.4rem,7vw,6rem)] text-bone">
           Your home deserves a
-          <em className="not-italic text-brass-gradient"> maker</em>, not a
+          <em className="not-italic text-brass-soft font-normal"> maker</em>, not a
           catalogue.
         </h2>
 

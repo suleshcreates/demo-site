@@ -231,10 +231,16 @@
 }
 
 @utility text-brass-gradient {
+  color: oklch(0.88 0.07 82);
   background: var(--gradient-brass);
   background-clip: text;
   -webkit-background-clip: text;
-  color: transparent;
+}
+
+@layer utilities {
+  .text-brass-gradient * {
+    color: oklch(0.88 0.07 82);
+  }
 }
 
 @utility hero-accent-line {

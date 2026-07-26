@@ -74,7 +74,7 @@ export function Projects() {
           </div>
         </div>
 
-        <div className="mt-16 grid auto-rows-[minmax(200px,auto)] grid-cols-2 gap-4 lg:grid-cols-4">
+        <div className="mt-16 grid auto-rows-[minmax(240px,auto)] grid-cols-2 gap-4 lg:grid-cols-4 grid-flow-dense">
           {shown.map((p) => (
             <article
               key={p.id}
