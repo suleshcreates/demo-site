@@ -2,9 +2,11 @@ import { useState } from "react";
 import { gsap, useGsap, revealHeading, Flip, ensureGsap } from "@/lib/anim";
 import { projects, projectFilters } from "@/data/content";
 import { cn } from "@/lib/utils";
+import { LightboxModal, type LightboxItem } from "@/components/lux/LightboxModal";
 
 export function Projects() {
   const [filter, setFilter] = useState<string>("All");
+  const [activeItem, setActiveItem] = useState<LightboxItem | null>(null);
 
   const ref = useGsap(({ self }) => {
     revealHeading(self.querySelector(".pj-head")!);
@@ -81,8 +83,23 @@ export function Projects() {
               data-tile
               data-flip-id={p.id}
               data-cursor="View"
+              onClick={() =>
+                setActiveItem({
+                  image: p.image,
+                  title: p.title,
+                  category: p.category,
+                  subtitle: `${p.scope} · ${p.location}`,
+                  description: `A custom-crafted solid wood interior project in ${p.location}. Hand-built in seasoned sheesham, precision finished, and installed by The Sheesham Artisans.`,
+                  details: [
+                    `Scope: ${p.scope}`,
+                    `Location: ${p.location}`,
+                    "Material: 100% Solid Seasoned Sheesham Wood",
+                    "Custom Joinery & Moisture Sealed",
+                  ],
+                })
+              }
               className={cn(
-                "group relative overflow-hidden bg-secondary",
+                "group relative overflow-hidden bg-secondary cursor-pointer",
                 p.span === "wide" && "col-span-2 row-span-2",
                 p.span === "tall" && "row-span-2",
               )}
@@ -109,6 +126,9 @@ export function Projects() {
           ))}
         </div>
       </div>
+
+      {/* Lightbox Preview Modal */}
+      <LightboxModal item={activeItem} onClose={() => setActiveItem(null)} />
     </section>
   );
 }

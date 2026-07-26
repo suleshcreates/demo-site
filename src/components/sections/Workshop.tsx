@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { gsap, useGsap, revealHeading } from "@/lib/anim";
 import { workshopGallery, images } from "@/data/content";
+import { LightboxModal, type LightboxItem } from "@/components/lux/LightboxModal";
 
 /** Pinned horizontal gallery: the workshop scrolls sideways as you scroll down. */
 export function Workshop() {
+  const [activeItem, setActiveItem] = useState<LightboxItem | null>(null);
+
   const ref = useGsap(({ self, reduced }) => {
     revealHeading(self.querySelector(".ws-head")!, { start: "top 90%" });
 
@@ -66,7 +70,16 @@ export function Workshop() {
         <div data-hscroll className="flex gap-6 pl-6 will-change-transform lg:pl-16">
           <article
             data-slide
-            className="relative h-[62vh] w-[86vw] shrink-0 overflow-hidden md:w-[62vw]"
+            onClick={() =>
+              setActiveItem({
+                image: images.workshopWide,
+                title: "The Workshop Floor",
+                category: "Kharadi, Pune Atelier",
+                subtitle: "9,000 sq ft master woodworking floor",
+                description: "Our dedicated workshop where raw seasoned sheesham logs are transformed into bespoke luxury furniture and modular kitchens.",
+              })
+            }
+            className="relative h-[62vh] w-[86vw] shrink-0 overflow-hidden cursor-pointer md:w-[62vw]"
           >
             <img
               src={images.workshopWide}
@@ -90,7 +103,16 @@ export function Workshop() {
               key={g.id}
               data-slide
               data-cursor="Play"
-              className="group relative h-[62vh] w-[72vw] shrink-0 overflow-hidden md:w-[34vw]"
+              onClick={() =>
+                setActiveItem({
+                  image: g.image,
+                  title: g.title,
+                  category: "Workshop discipline",
+                  subtitle: g.caption,
+                  description: `Master craft spotlight: ${g.title}. Handcrafted with traditional mortise and tenon joinery in Pune.`,
+                })
+              }
+              className="group relative h-[62vh] w-[72vw] shrink-0 overflow-hidden cursor-pointer md:w-[34vw]"
             >
               <img
                 src={g.image}
@@ -122,6 +144,8 @@ export function Workshop() {
           </article>
         </div>
       </div>
+
+      <LightboxModal item={activeItem} onClose={() => setActiveItem(null)} />
     </section>
   );
 }

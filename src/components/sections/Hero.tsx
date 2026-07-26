@@ -185,14 +185,14 @@ export function Hero() {
       />
       <WoodDust />
 
-      <div className="container-lux relative z-10 flex h-full flex-col justify-end pb-16 md:pb-24">
+      <div className="container-lux relative z-10 flex h-full flex-col justify-end pb-16 pt-28 md:pb-24 md:pt-36">
         <div className="hero-copy max-w-5xl select-none" data-depth="0.18">
           <p className="hero-fade eyebrow">{banner.eyebrow}</p>
-          <h1 className="mt-6 max-w-[11ch] font-display text-[clamp(3rem,9vw,8.75rem)] leading-[1.05] text-bone drop-shadow-[0_4px_24px_rgba(0,0,0,0.85)]">
+          <h1 className="mt-6 max-w-4xl font-display text-[clamp(3.2rem,8.5vw,8.5rem)] leading-[1.08] text-bone drop-shadow-[0_4px_24px_rgba(0,0,0,0.85)]">
             {banner.headline.map((line, i) => (
-              <span key={line} className="hero-line block overflow-hidden py-2 -my-2">
+              <span key={line} className="hero-line block [clip-path:inset(-15px_-20px_-25px_-20px)] py-1">
                 {i === banner.headline.length - 1 ? (
-                  <em className="hero-accent-line inline-block not-italic text-brass-soft pb-1 drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)]">{line}</em>
+                  <em className="hero-accent-line inline-block not-italic text-[oklch(0.93_0.055_85)] pb-1 drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)]">{line}</em>
                 ) : (
                   line
                 )}

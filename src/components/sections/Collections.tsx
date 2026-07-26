@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { gsap, useGsap, revealHeading } from "@/lib/anim";
 import { categories } from "@/data/content";
 import { cn } from "@/lib/utils";
+import { LightboxModal, type LightboxItem } from "@/components/lux/LightboxModal";
 
 export function Collections() {
   const [preview, setPreview] = useState<string | null>(null);
+  const [activeItem, setActiveItem] = useState<LightboxItem | null>(null);
 
   const ref = useGsap(({ self, reduced }) => {
     revealHeading(self.querySelector(".coll-head")!);
@@ -84,8 +86,22 @@ export function Collections() {
               data-card
               onMouseEnter={() => setPreview(c.id)}
               onMouseLeave={() => setPreview(null)}
+              onClick={() =>
+                setActiveItem({
+                  image: c.image,
+                  title: c.name,
+                  category: "Collection discipline",
+                  subtitle: `Starting from ${c.from}`,
+                  description: c.blurb,
+                  details: [
+                    "100% Solid Seasoned Sheesham Wood",
+                    "7-Stage Hand-Rubbed Oil & PU Finish",
+                    "Custom dimensions & hardware available",
+                  ],
+                })
+              }
               data-cursor="Preview"
-              className="group relative overflow-hidden bg-background"
+              className="group relative overflow-hidden bg-background cursor-pointer"
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <img
@@ -134,6 +150,9 @@ export function Collections() {
           {active?.name.split(" ").slice(-1)}
         </p>
       </div>
+
+      {/* Lightbox Preview Modal */}
+      <LightboxModal item={activeItem} onClose={() => setActiveItem(null)} />
     </section>
   );
 }
